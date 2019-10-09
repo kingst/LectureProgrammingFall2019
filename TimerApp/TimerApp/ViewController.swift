@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var startStopButton: UIButton!
-    var lapCount: Int = 0
+    var lapCount = 0
+    @IBOutlet weak var lapLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class ViewController: UIViewController {
     @IBAction func lapButtonPressed() {
         self.lapCount += 1
         print("Lap button pressed \(self.lapCount)")
+        self.lapLabel.text = "Lap: \(self.lapCount)"
     }
 }
 

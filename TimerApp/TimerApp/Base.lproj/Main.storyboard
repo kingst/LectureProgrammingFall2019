@@ -41,19 +41,29 @@
                                     <action selector="lapButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jbo-cG-wfe"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lap: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaB-rF-VTE">
+                                <rect key="frame" x="16" y="411" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="CaB-rF-VTE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EcN-mF-XfY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HB7-TP-ALy" secondAttribute="bottom" constant="20" id="KhY-Ud-cTA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sJR-ez-cfN" secondAttribute="trailing" constant="16" id="QLb-0c-arM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CaB-rF-VTE" secondAttribute="trailing" constant="16" id="VHx-RG-jWE"/>
                             <constraint firstItem="sJR-ez-cfN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Za2-1y-w6w"/>
                             <constraint firstItem="HB7-TP-ALy" firstAttribute="top" secondItem="sJR-ez-cfN" secondAttribute="bottom" constant="8" id="diI-Ur-H09"/>
                             <constraint firstItem="HB7-TP-ALy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fwG-jQ-dgM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HB7-TP-ALy" secondAttribute="trailing" constant="16" id="mSr-bm-Rch"/>
+                            <constraint firstItem="sJR-ez-cfN" firstAttribute="top" secondItem="CaB-rF-VTE" secondAttribute="bottom" constant="8" id="oNj-fS-pdC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lapLabel" destination="CaB-rF-VTE" id="EGg-PU-fyg"/>
                         <outlet property="startStopButton" destination="HB7-TP-ALy" id="HG9-zL-Lgb"/>
                     </connections>
                 </viewController>
