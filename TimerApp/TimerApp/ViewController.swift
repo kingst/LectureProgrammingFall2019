@@ -22,8 +22,14 @@ class ViewController: UIViewController {
     @IBAction func startStopButtonPress() {
         print("startStop press")
         self.toggleButton(between: ("Start", "Stop"), on: self.startStopButton)
-        //self.dontUse("hello")
-        //self.useIfYouWant(foo: "bar")
+    }
+    @IBAction func settingsPress(_ sender: Any) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "settingsViewController")
+            let settings = vc as! SettingsViewController
+            self.navigationController?.pushViewController(settings, animated: true)
+        }
     }
     
     func toggleButton(between titles: (String, String), on button: UIButton) {
@@ -32,15 +38,7 @@ class ViewController: UIViewController {
         
     }
     
-    /*
-    func dontUse(_ foo: String) {
-        
-    }*/
-    
-    /*
-    func useIfYouWant(foo: String) {
-        
-    }*/
+
     @IBAction func lapButtonPressed() {
         self.lapCount += 1
         print("Lap button pressed \(self.lapCount)")
