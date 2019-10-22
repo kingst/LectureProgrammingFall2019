@@ -8,28 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, TimerUpdates {
     @IBOutlet weak var startStopButton: UIButton!
     var lapCount = 0
     @IBOutlet weak var lapLabel: UILabel!
     
+    let timerModel = TimerModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        timerModel.delegate = self
     }
 
     @IBAction func startStopButtonPress() {
-        print("startStop press")
+        if self.startStopButton.titleLabel?.text == "Start" {
+            self.timerModel.start()
+        } else {
+            self.timerModel.stop()
+        }
+        
         self.toggleButton(between: ("Start", "Stop"), on: self.startStopButton)
     }
     @IBAction func settingsPress(_ sender: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(identifier: "settingsViewController")
-            let settings = vc as! SettingsViewController
-            self.navigationController?.pushViewController(settings, animated: true)
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "settingsViewController")
+        let settings = vc as! SettingsViewController
+        self.navigationController?.pushViewController(settings, animated: true)
     }
     
     func toggleButton(between titles: (String, String), on button: UIButton) {
@@ -43,6 +47,19 @@ class ViewController: UIViewController {
         self.lapCount += 1
         print("Lap button pressed \(self.lapCount)")
         self.lapLabel.text = "Lap: \(self.lapCount)"
+    }
+    
+    // MARK: timer protocol implementation
+    func updatedTime(_ time: Double) {
+        print("current time \(time)")
+    }
+    
+    func runningUpdated(isRunning: Bool) {
+        print("running updated")
+    }
+    
+    func updatedLaps(_ laps: [Double]) {
+        print("laps updated")
     }
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1BE314235F83C20059CE5C /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1BE313235F83C20059CE5C /* TimerModel.swift */; };
 		3BB48BF6234658690051E2E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB48BF5234658690051E2E1 /* AppDelegate.swift */; };
 		3BB48BF8234658690051E2E1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB48BF7234658690051E2E1 /* SceneDelegate.swift */; };
 		3BB48BFA234658690051E2E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB48BF9234658690051E2E1 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B1BE313235F83C20059CE5C /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		3BB48BF2234658690051E2E1 /* TimerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BB48BF5234658690051E2E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BB48BF7234658690051E2E1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				3BB48BFE234658690051E2E1 /* Assets.xcassets */,
 				3BB48C00234658690051E2E1 /* LaunchScreen.storyboard */,
 				3BB48C03234658690051E2E1 /* Info.plist */,
+				3B1BE313235F83C20059CE5C /* TimerModel.swift */,
 			);
 			path = TimerApp;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			files = (
 				3BB48BFA234658690051E2E1 /* ViewController.swift in Sources */,
 				3BB48BF6234658690051E2E1 /* AppDelegate.swift in Sources */,
+				3B1BE314235F83C20059CE5C /* TimerModel.swift in Sources */,
 				3BB48BF8234658690051E2E1 /* SceneDelegate.swift in Sources */,
 				3BC7EC7E23563C0D002E06C3 /* SettingsViewController.swift in Sources */,
 			);

@@ -85,14 +85,29 @@
                     <view key="view" contentMode="scaleToFill" id="dij-oP-qYj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KQY-HQ-Io3">
+                                <rect key="frame" x="16" y="60" width="288" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KQY-HQ-Io3" firstAttribute="leading" secondItem="szR-xa-Zlp" secondAttribute="leading" constant="16" id="jdU-Ry-NAr"/>
+                            <constraint firstItem="KQY-HQ-Io3" firstAttribute="top" secondItem="szR-xa-Zlp" secondAttribute="top" constant="16" id="lso-1f-6gX"/>
+                            <constraint firstItem="szR-xa-Zlp" firstAttribute="trailing" secondItem="KQY-HQ-Io3" secondAttribute="trailing" constant="16" id="rF6-mY-S74"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="szR-xa-Zlp"/>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textField" destination="KQY-HQ-Io3" id="BtQ-JG-IT1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZaM-qx-udY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1976" y="138"/>
+            <point key="canvasLocation" x="1974.375" y="137.32394366197184"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="svF-X8-TKb">
