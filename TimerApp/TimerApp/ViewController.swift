@@ -8,16 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController, TimerUpdates {
+class ViewController: UIViewController, TimerUpdates, UITableViewDataSource {
     @IBOutlet weak var startStopButton: UIButton!
     var lapCount = 0
     @IBOutlet weak var lapLabel: UILabel!
     
+    @IBOutlet weak var timeLabel: UILabel!
     let timerModel = TimerModel()
+    var laps: [Double] = []
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         timerModel.delegate = self
+        tableView.dataSource = self
     }
 
     @IBAction func startStopButtonPress() {
@@ -44,14 +48,12 @@ class ViewController: UIViewController, TimerUpdates {
     
 
     @IBAction func lapButtonPressed() {
-        self.lapCount += 1
-        print("Lap button pressed \(self.lapCount)")
-        self.lapLabel.text = "Lap: \(self.lapCount)"
+        self.timerModel.addLap()
     }
     
     // MARK: timer protocol implementation
     func updatedTime(_ time: Double) {
-        print("current time \(time)")
+        self.timeLabel.text = String(format: "%0.02f", time)
     }
     
     func runningUpdated(isRunning: Bool) {
@@ -59,7 +61,21 @@ class ViewController: UIViewController, TimerUpdates {
     }
     
     func updatedLaps(_ laps: [Double]) {
-        print("laps updated")
+        self.laps = laps
+        self.tableView.reloadData()
+    }
+    
+    // MARK: table view data source implementation
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.laps.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lapCell") ?? UITableViewCell(style: .default, reuseIdentifier: "lapCell")
+        let lapNumber = indexPath.row + 1
+        let lapTime = String(format: "%0.02f", self.laps[indexPath.row])
+        cell.textLabel?.text = "Lap \(lapNumber) \(lapTime)"
+        return cell
     }
 }
 

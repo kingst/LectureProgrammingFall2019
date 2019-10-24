@@ -47,18 +47,38 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="S9C-yL-A0N">
+                                <rect key="frame" x="16" y="60" width="288" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="i1Y-92-cbj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pIw-Eb-S6d">
+                                <rect key="frame" x="16" y="143" width="288" height="260"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="pIw-Eb-S6d" firstAttribute="top" secondItem="S9C-yL-A0N" secondAttribute="bottom" constant="8" id="36q-ko-Vvu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pIw-Eb-S6d" secondAttribute="trailing" constant="16" id="4IQ-xM-Pio"/>
                             <constraint firstItem="CaB-rF-VTE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EcN-mF-XfY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HB7-TP-ALy" secondAttribute="bottom" constant="20" id="KhY-Ud-cTA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sJR-ez-cfN" secondAttribute="trailing" constant="16" id="QLb-0c-arM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CaB-rF-VTE" secondAttribute="trailing" constant="16" id="VHx-RG-jWE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S9C-yL-A0N" secondAttribute="trailing" constant="16" id="XU0-Ka-Gl4"/>
                             <constraint firstItem="sJR-ez-cfN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Za2-1y-w6w"/>
                             <constraint firstItem="HB7-TP-ALy" firstAttribute="top" secondItem="sJR-ez-cfN" secondAttribute="bottom" constant="8" id="diI-Ur-H09"/>
                             <constraint firstItem="HB7-TP-ALy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="fwG-jQ-dgM"/>
+                            <constraint firstItem="S9C-yL-A0N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="gMw-KC-Kkc"/>
+                            <constraint firstItem="pIw-Eb-S6d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="m3a-Kl-eza"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HB7-TP-ALy" secondAttribute="trailing" constant="16" id="mSr-bm-Rch"/>
                             <constraint firstItem="sJR-ez-cfN" firstAttribute="top" secondItem="CaB-rF-VTE" secondAttribute="bottom" constant="8" id="oNj-fS-pdC"/>
+                            <constraint firstItem="CaB-rF-VTE" firstAttribute="top" secondItem="pIw-Eb-S6d" secondAttribute="bottom" constant="8" id="prI-Yc-6OP"/>
+                            <constraint firstItem="S9C-yL-A0N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="uMx-Ov-UXd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -72,6 +92,8 @@
                     <connections>
                         <outlet property="lapLabel" destination="CaB-rF-VTE" id="EGg-PU-fyg"/>
                         <outlet property="startStopButton" destination="HB7-TP-ALy" id="HG9-zL-Lgb"/>
+                        <outlet property="tableView" destination="pIw-Eb-S6d" id="TjI-lg-b2K"/>
+                        <outlet property="timeLabel" destination="S9C-yL-A0N" id="o8H-6z-dP8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

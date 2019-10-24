@@ -63,12 +63,12 @@
 				3BB48BF5234658690051E2E1 /* AppDelegate.swift */,
 				3BB48BF7234658690051E2E1 /* SceneDelegate.swift */,
 				3BC7EC7D23563C0D002E06C3 /* SettingsViewController.swift */,
+				3B1BE313235F83C20059CE5C /* TimerModel.swift */,
 				3BB48BF9234658690051E2E1 /* ViewController.swift */,
 				3BB48BFB234658690051E2E1 /* Main.storyboard */,
 				3BB48BFE234658690051E2E1 /* Assets.xcassets */,
 				3BB48C00234658690051E2E1 /* LaunchScreen.storyboard */,
 				3BB48C03234658690051E2E1 /* Info.plist */,
-				3B1BE313235F83C20059CE5C /* TimerModel.swift */,
 			);
 			path = TimerApp;
 			sourceTree = "<group>";
