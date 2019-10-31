@@ -22,3 +22,15 @@ extension UIImage {
 }
 
 let croppedImage = image.crop(to: rect)
+
+let dogs = ["annie", "milo", "bob", "chewey", "rex"]
+let thisDog = "bob"
+
+print(dogs)
+print(dogs.dropFirst())
+
+for (prev, current) in zip(dogs, dogs.dropFirst()) {
+    if current == thisDog {
+        print("Match -> \(prev)")
+    }
+}
