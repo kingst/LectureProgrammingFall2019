@@ -22,4 +22,32 @@ func sendResponse(socket: Int, request: String, database: String, filesystem: St
 
 
 // =========================================
+let serverSocket = 1234
 
+// your code here!
+
+newClientConnection(serverSocket: serverSocket) { socket, error in
+    guard let socket = socket, error != nil else {
+        return
+    }
+    
+    readHTTPRequest(socket: socket) { request, error in
+        guard let request = request, error != nil else {
+            return
+        }
+        
+        accessFilesystem(request: request) { fileSystem, error in
+            guard let fileSystem = fileSystem, error != nil else {
+                return
+            }
+            
+            accessDatabase(request: request) { database, error in
+                guard let database = database, error != nil else {
+                    return
+                }
+                
+                sendResponse(socket: socket, request: request, database: database, filesystem: fileSystem)
+            }
+        }
+    }
+}
