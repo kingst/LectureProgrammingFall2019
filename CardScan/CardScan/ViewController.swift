@@ -49,12 +49,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func performOcr() {
-        let embossedBoxes = detectNumberEmbossed(image: image)
-        let embossedNumber = embossedBoxes.map { recognizeCharacters(image: image, characterBox: $0) }.joined()
-        let flatBoxes = detectNumberFlat(image: image)
-        let flatNumber = flatBoxes.map { recognizeCharacters(image: image, characterBox: $0) }.joined()
+        let embossedBoxes = self.detectNumberEmbossed(image: self.image)
+        let embossedNumber = embossedBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
+        let flatBoxes = self.detectNumberFlat(image: self.image)
+        let flatNumber = flatBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
         
-        let answer = pickNumber(flat: flatNumber, embossed: embossedNumber)
+        let answer = self.pickNumber(flat: flatNumber, embossed: embossedNumber)
         
         self.embossedNumber.text = embossedNumber
         self.flatNumber.text = flatNumber
