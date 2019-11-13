@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var answer: UILabel!
     
     var image = #imageLiteral(resourceName: "green_dot")
+    var runningOcr = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,17 +49,55 @@ class ViewController: UIViewController {
         return flat
     }
     
+    func updateUi(number: String) {
+        
+    }
+    
     @IBAction func performOcr() {
-        let embossedBoxes = self.detectNumberEmbossed(image: self.image)
-        let embossedNumber = embossedBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
-        let flatBoxes = self.detectNumberFlat(image: self.image)
-        let flatNumber = flatBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
+        if self.runningOcr {
+            return
+        }
+        self.runningOcr = true
         
-        let answer = self.pickNumber(flat: flatNumber, embossed: embossedNumber)
+        let semaphore = DispatchSemaphore(value: 0)
         
-        self.embossedNumber.text = embossedNumber
-        self.flatNumber.text = flatNumber
-        self.answer.text = answer
+        let machineLearningQueue = DispatchQueue(label: "Machine learning")
+        machineLearningQueue.async {
+            var embossedNumber: String?
+            DispatchQueue.global(qos: .userInitiated).async {
+                let embossedBoxes = self.detectNumberEmbossed(image: self.image)
+                let n = embossedBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
+                machineLearningQueue.async {
+                    embossedNumber = n
+                    semaphore.signal()
+                }
+            }
+            
+            var flatNumber: String?
+            DispatchQueue.global(qos: .userInitiated).async {
+                let flatBoxes = self.detectNumberFlat(image: self.image)
+                let n = flatBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
+                machineLearningQueue.async {
+                    flatNumber = n
+                    semaphore.signal()
+                }
+            }
+            
+            semaphore.wait()
+            semaphore.wait()
+            
+            let answer = self.pickNumber(flat: flatNumber ?? "???", embossed: embossedNumber ?? "???")
+            
+            DispatchQueue.main.async {
+                self.embossedNumber.text = embossedNumber
+                self.flatNumber.text = flatNumber
+                self.answer.text = answer
+                DispatchQueue.main.async {
+                    self.answer.text = "4242 4242 4242 4242"
+                }
+                self.runningOcr = false
+            }
+        }
     }
     
 }
