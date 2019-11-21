@@ -59,32 +59,29 @@ class ViewController: UIViewController {
         }
         self.runningOcr = true
         
-        let semaphore = DispatchSemaphore(value: 0)
+        let group = DispatchGroup()
         
         let machineLearningQueue = DispatchQueue(label: "Machine learning")
         machineLearningQueue.async {
             var embossedNumber: String?
+            group.enter()
             DispatchQueue.global(qos: .userInitiated).async {
                 let embossedBoxes = self.detectNumberEmbossed(image: self.image)
                 let n = embossedBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
-                machineLearningQueue.async {
-                    embossedNumber = n
-                    semaphore.signal()
-                }
+                embossedNumber = n
+                group.leave()
             }
             
             var flatNumber: String?
+            group.enter()
             DispatchQueue.global(qos: .userInitiated).async {
                 let flatBoxes = self.detectNumberFlat(image: self.image)
                 let n = flatBoxes.map { self.recognizeCharacters(image: self.image, characterBox: $0) }.joined()
-                machineLearningQueue.async {
-                    flatNumber = n
-                    semaphore.signal()
-                }
+                flatNumber = n
+                group.leave()
             }
             
-            semaphore.wait()
-            semaphore.wait()
+            group.wait()
             
             let answer = self.pickNumber(flat: flatNumber ?? "???", embossed: embossedNumber ?? "???")
             
@@ -92,9 +89,6 @@ class ViewController: UIViewController {
                 self.embossedNumber.text = embossedNumber
                 self.flatNumber.text = flatNumber
                 self.answer.text = answer
-                DispatchQueue.main.async {
-                    self.answer.text = "4242 4242 4242 4242"
-                }
                 self.runningOcr = false
             }
         }
